@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720" font-family="Segoe UI, Arial, sans-serif">
+  <title>ER Diagram - Restaurant Food Stock Management System</title>
+
+  <defs>
+    <style>
+      .entity rect { fill:#ffffff; stroke:#c2410c; stroke-width:2; rx:8; }
+      .entity .title { fill:#c2410c; font-size:16px; font-weight:700; }
+      .entity .field { fill:#1f1a16; font-size:12.5px; }
+      .entity .pk { fill:#9a3412; font-weight:700; }
+      .entity .fk { fill:#1c5cab; font-weight:700; }
+      .rel { stroke:#52514e; stroke-width:1.8; fill:none; }
+      .card { fill:#52514e; font-size:13px; font-weight:700; }
+      .note { fill:#5d534a; font-size:12px; font-style:italic; }
+      .heading { fill:#1f1a16; font-size:19px; font-weight:700; }
+    </style>
+  </defs>
+
+  <rect width="960" height="720" fill="#faf6f1"/>
+  <text x="480" y="38" text-anchor="middle" class="heading">Restaurant Food Stock Management - ER Diagram</text>
+
+  <!-- ============ SUPPLIERS ============ -->
+  <g class="entity">
+    <rect x="45" y="95" width="305" height="205"/>
+    <rect x="45" y="95" width="305" height="38" fill="#c2410c" rx="8"/>
+    <rect x="45" y="120" width="305" height="13" fill="#c2410c"/>
+    <text x="197" y="120" text-anchor="middle" class="title" fill="#ffffff">SUPPLIERS</text>
+    <text x="62" y="158" class="field"><tspan class="pk">PK</tspan><tspan x="100">supplier_id</tspan><tspan x="330" text-anchor="end" class="field">INT</tspan></text>
+    <text x="62" y="183" class="field">supplier_name</text>
+    <text x="330" y="183" text-anchor="end" class="field">VARCHAR(100)</text>
+    <text x="62" y="208" class="field">phone</text>
+    <text x="330" y="208" text-anchor="end" class="field">VARCHAR(20)</text>
+    <text x="62" y="233" class="field">address</text>
+    <text x="330" y="233" text-anchor="end" class="field">VARCHAR(255)</text>
+    <line x1="45" y1="250" x2="350" y2="250" stroke="#e8e0d6"/>
+    <text x="62" y="272" class="field">One supplier can have</text>
+    <text x="62" y="288" class="field">many purchases</text>
+  </g>
+
+  <!-- ============ INGREDIENTS ============ -->
+  <g class="entity">
+    <rect x="610" y="95" width="305" height="240"/>
+    <rect x="610" y="95" width="305" height="38" fill="#1c5cab" rx="8"/>
+    <rect x="610" y="120" width="305" height="13" fill="#1c5cab"/>
+    <text x="762" y="120" text-anchor="middle" class="title" fill="#ffffff">INGREDIENTS</text>
+    <text x="627" y="158" class="field"><tspan class="pk">PK</tspan><tspan x="665">ingredient_id</tspan><tspan x="898" text-anchor="end" class="field">INT</tspan></text>
+    <text x="627" y="183" class="field">ingredient_name</text>
+    <text x="898" y="183" text-anchor="end" class="field">VARCHAR(100)</text>
+    <text x="627" y="208" class="field">quantity</text>
+    <text x="898" y="208" text-anchor="end" class="field">DECIMAL(10,2)</text>
+    <text x="627" y="233" class="field">unit</text>
+    <text x="898" y="233" text-anchor="end" class="field">VARCHAR(20)</text>
+    <text x="627" y="258" class="field">price_per_unit</text>
+    <text x="898" y="258" text-anchor="end" class="field">DECIMAL(10,2)</text>
+    <text x="627" y="283" class="field">reorder_level</text>
+    <text x="898" y="283" text-anchor="end" class="field">DECIMAL(10,2)</text>
+    <line x1="610" y1="300" x2="915" y2="300" stroke="#e8e0d6"/>
+    <text x="627" y="320" class="field">One ingredient can appear</text>
+    <text x="627" y="336" class="field">in many purchases</text>
+  </g>
+
+  <!-- ============ PURCHASES ============ -->
+  <g class="entity">
+    <rect x="320" y="455" width="320" height="225"/>
+    <rect x="320" y="455" width="320" height="38" fill="#0f766e" rx="8"/>
+    <rect x="320" y="480" width="320" height="13" fill="#0f766e"/>
+    <text x="480" y="480" text-anchor="middle" class="title" fill="#ffffff">PURCHASES</text>
+    <text x="337" y="518" class="field"><tspan class="pk">PK</tspan><tspan x="375">purchase_id</tspan><tspan x="623" text-anchor="end" class="field">INT</tspan></text>
+    <text x="337" y="543" class="field"><tspan class="fk">FK</tspan><tspan x="375">supplier_id</tspan><tspan x="623" text-anchor="end" class="field">INT</tspan></text>
+    <text x="337" y="568" class="field"><tspan class="fk">FK</tspan><tspan x="375">ingredient_id</tspan><tspan x="623" text-anchor="end" class="field">INT</tspan></text>
+    <text x="337" y="593" class="field">quantity_purchased</text>
+    <text x="623" y="593" text-anchor="end" class="field">DECIMAL(10,2)</text>
+    <text x="337" y="618" class="field">purchase_date</text>
+    <text x="623" y="618" text-anchor="end" class="field">DATE</text>
+    <text x="337" y="643" class="field">total_cost</text>
+    <text x="623" y="643" text-anchor="end" class="field">DECIMAL(12,2)</text>
+    <line x1="320" y1="658" x2="640" y2="658" stroke="#e8e0d6"/>
+    <text x="337" y="675" class="note">total_cost = quantity_purchased x price_per_unit</text>
+  </g>
+
+  <!-- ============ RELATIONSHIP LINES ============ -->
+  <!-- Suppliers 1 -> N Purchases -->
+  <path class="rel" d="M 350 200 L 380 200 L 380 455"/>
+  <text x="392" y="330" class="card">1</text>
+  <text x="392" y="348" class="card">:</text>
+  <text x="392" y="366" class="card">N</text>
+  <text x="392" y="386" class="note">one supplier</text>
+  <text x="392" y="402" class="note">many purchases</text>
+
+  <!-- Ingredients 1 -> N Purchases -->
+  <path class="rel" d="M 610 240 L 580 240 L 580 455"/>
+  <text x="592" y="330" class="card">1</text>
+  <text x="592" y="348" class="card">:</text>
+  <text x="592" y="366" class="card">N</text>
+  <text x="592" y="386" class="note">one ingredient</text>
+  <text x="592" y="402" class="note">many purchases</text>
+
+  <!-- M:N note -->
+  <rect x="45" y="455" width="245" height="120" fill="#fdf0e8" stroke="#c2410c" stroke-width="1.5" rx="8"/>
+  <text x="62" y="481" class="field" font-weight="700">M : N relationship</text>
+  <text x="62" y="503" class="note">SUPPLIERS and INGREDIENTS are</text>
+  <text x="62" y="521" class="note">linked through PURCHASES.</text>
+  <text x="62" y="539" class="note">One purchase row holds exactly</text>
+  <text x="62" y="557" class="note">one supplier + one ingredient.</text>
+
+  <!-- Referential integrity note -->
+  <rect x="645" y="455" width="270" height="120" fill="#eef4fb" stroke="#1c5cab" stroke-width="1.5" rx="8"/>
+  <text x="662" y="481" class="field" font-weight="700">Referential integrity</text>
+  <text x="662" y="503" class="note">ON DELETE RESTRICT on both FKs.</text>
+  <text x="662" y="521" class="note">A supplier or ingredient that is</text>
+  <text x="662" y="539" class="note">used in a purchase cannot be</text>
+  <text x="662" y="557" class="note">deleted.</text>
+
+  <!-- Legend -->
+  <rect x="45" y="600" width="870" height="90" fill="#ffffff" stroke="#e8e0d6" rx="8"/>
+  <text x="62" y="626" class="field" font-weight="700">Legend</text>
+  <text x="150" y="626" class="pk">PK</text><text x="175" y="626" class="note">= Primary Key</text>
+  <text x="290" y="626" class="fk">FK</text><text x="315" y="626" class="note">= Foreign Key</text>
+  <text x="450" y="626" class="note">All three tables use the InnoDB engine so that transactions and foreign keys work.</text>
+  <text x="62" y="652" class="note">quantity in INGREDIENTS is the current available stock. Recording a purchase increases it inside a transaction.</text>
+  <text x="62" y="672" class="note">reorder_level is the minimum stock level - an ingredient with quantity below it is flagged as low stock.</text>
+</svg>

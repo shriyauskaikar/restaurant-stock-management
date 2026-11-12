@@ -1,0 +1,9 @@
+.git
+.gitignore
+.vercel
+.env
+.env.*
+node_modules
+*.md
+!README.md
+test_e2e.sh

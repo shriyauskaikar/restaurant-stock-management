@@ -1,0 +1,17 @@
+# Local environment files (database passwords must never be committed)
+.env
+.env.local
+.env.*.local
+
+# Vercel CLI project link
+.vercel
+
+# Test artefacts
+cookies.txt
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.swp
+
+.vercel

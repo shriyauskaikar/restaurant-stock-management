@@ -1,0 +1,24 @@
+# Caddyfile
+# ---------------------------------------------------------------------
+# Caddy is the web server that runs inside the container.
+# It serves the PHP pages and the static files (CSS / JavaScript / SVG).
+
+{
+	frankenphp
+}
+
+:{$PORT:80} {
+	root * /app
+	encode zstd gzip
+
+	# Keep the private folders and the test scripts away from the internet.
+	# They are meant to be run from the command line, not from a browser.
+	@private path /config/* /includes/* /sql/* /test_*.php /Dockerfile /Caddyfile /vercel.json /README.md /.git*
+	handle @private {
+		respond "Not found" 404
+	}
+
+	handle {
+		php_server
+	}
+}
