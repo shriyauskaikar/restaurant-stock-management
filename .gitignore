@@ -1,0 +1,10 @@
+# Private machine settings - contains real passwords, NEVER upload.
+config/local.php
+
+# Local server / editor clutter
+.vercel/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db

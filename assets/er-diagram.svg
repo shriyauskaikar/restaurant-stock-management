@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 830" width="960" height="830" font-family="Segoe UI, Arial, sans-serif">
+  <title>ER Diagram - Restaurant Food Stock Management System</title>
+
+  <defs>
+    <style>
+      .entity rect { fill:#ffffff; stroke:#c2410c; stroke-width:2; rx:8; }
+      .entity .title { fill:#c2410c; font-size:16px; font-weight:700; }
+      .entity .field { fill:#1f1a16; font-size:12.5px; }
+      .entity .pk { fill:#9a3412; font-weight:700; }
+      .entity .fk { fill:#1c5cab; font-weight:700; }
+      .rel { stroke:#52514e; stroke-width:1.8; fill:none; }
+      .card { fill:#52514e; font-size:13px; font-weight:700; }
+      .note { fill:#5d534a; font-size:12px; font-style:italic; }
+      .heading { fill:#1f1a16; font-size:19px; font-weight:700; }
+    </style>
+  </defs>
+
+  <rect width="960" height="830" fill="#faf6f1"/>
+  <text x="480" y="38" text-anchor="middle" class="heading">Restaurant Food Stock Management - ER Diagram</text>
+
+  <!-- ============ USERS ============ -->
+  <g class="entity">
+    <rect x="45" y="95" width="305" height="190"/>
+    <rect x="45" y="95" width="305" height="38" fill="#6b21a8" rx="8"/>
+    <rect x="45" y="120" width="305" height="13" fill="#6b21a8"/>
+    <text x="197" y="120" text-anchor="middle" class="title" fill="#ffffff">USERS</text>
+    <text x="62" y="158" class="field"><tspan class="pk">PK</tspan><tspan x="100">user_id</tspan><tspan x="330" text-anchor="end" class="field">INT</tspan></text>
+    <text x="62" y="183" class="field">username</text>
+    <text x="330" y="183" text-anchor="end" class="field">VARCHAR(50)</text>
+    <text x="62" y="208" class="field">email</text>
+    <text x="330" y="208" text-anchor="end" class="field">VARCHAR(120)</text>
+    <text x="62" y="233" class="field">password</text>
+    <text x="330" y="233" text-anchor="end" class="field">VARCHAR(255)</text>
+    <text x="62" y="258" class="field">created_at</text>
+    <text x="330" y="258" text-anchor="end" class="field">TIMESTAMP</text>
+    <line x1="45" y1="270" x2="350" y2="270" stroke="#e8e0d6"/>
+    <text x="62" y="278" class="note">password stores a bcrypt HASH,</text>
+  </g>
+
+  <!-- ============ SUPPLIERS ============ -->
+  <g class="entity">
+    <rect x="610" y="95" width="305" height="190"/>
+    <rect x="610" y="95" width="305" height="38" fill="#c2410c" rx="8"/>
+    <rect x="610" y="120" width="305" height="13" fill="#c2410c"/>
+    <text x="762" y="120" text-anchor="middle" class="title" fill="#ffffff">SUPPLIERS</text>
+    <text x="627" y="158" class="field"><tspan class="pk">PK</tspan><tspan x="665">supplier_id</tspan><tspan x="898" text-anchor="end" class="field">INT</tspan></text>
+    <text x="627" y="183" class="field">supplier_name</text>
+    <text x="898" y="183" text-anchor="end" class="field">VARCHAR(100)</text>
+    <text x="627" y="208" class="field">phone</text>
+    <text x="898" y="208" text-anchor="end" class="field">VARCHAR(20)</text>
+    <text x="627" y="233" class="field">address</text>
+    <text x="898" y="233" text-anchor="end" class="field">VARCHAR(255)</text>
+    <line x1="610" y1="245" x2="915" y2="245" stroke="#e8e0d6"/>
+    <text x="627" y="266" class="field">One supplier can have</text>
+    <text x="627" y="282" class="field">many purchases</text>
+  </g>
+
+  <!-- ============ INGREDIENTS ============ -->
+  <g class="entity">
+    <rect x="610" y="345" width="305" height="225"/>
+    <rect x="610" y="345" width="305" height="38" fill="#1c5cab" rx="8"/>
+    <rect x="610" y="370" width="305" height="13" fill="#1c5cab"/>
+    <text x="762" y="370" text-anchor="middle" class="title" fill="#ffffff">INGREDIENTS</text>
+    <text x="627" y="408" class="field"><tspan class="pk">PK</tspan><tspan x="665">ingredient_id</tspan><tspan x="898" text-anchor="end" class="field">INT</tspan></text>
+    <text x="627" y="433" class="field">ingredient_name</text>
+    <text x="898" y="433" text-anchor="end" class="field">VARCHAR(100)</text>
+    <text x="627" y="458" class="field">quantity</text>
+    <text x="898" y="458" text-anchor="end" class="field">DECIMAL(10,2)</text>
+    <text x="627" y="483" class="field">unit</text>
+    <text x="898" y="483" text-anchor="end" class="field">VARCHAR(20)</text>
+    <text x="627" y="508" class="field">price_per_unit</text>
+    <text x="898" y="508" text-anchor="end" class="field">DECIMAL(10,2)</text>
+    <text x="627" y="533" class="field">reorder_level</text>
+    <text x="898" y="533" text-anchor="end" class="field">DECIMAL(10,2)</text>
+    <line x1="610" y1="545" x2="915" y2="545" stroke="#e8e0d6"/>
+    <text x="627" y="565" class="field">One ingredient can appear</text>
+    <text x="627" y="581" class="field">in many purchases</text>
+  </g>
+
+  <!-- ============ PURCHASES ============ -->
+  <g class="entity">
+    <rect x="320" y="345" width="260" height="225"/>
+    <rect x="320" y="345" width="260" height="38" fill="#0f766e" rx="8"/>
+    <rect x="320" y="370" width="260" height="13" fill="#0f766e"/>
+    <text x="450" y="370" text-anchor="middle" class="title" fill="#ffffff">PURCHASES</text>
+    <text x="337" y="408" class="field"><tspan class="pk">PK</tspan><tspan x="375">purchase_id</tspan><tspan x="563" text-anchor="end" class="field">INT</tspan></text>
+    <text x="337" y="433" class="field"><tspan class="fk">FK</tspan><tspan x="375">supplier_id</tspan><tspan x="563" text-anchor="end" class="field">INT</tspan></text>
+    <text x="337" y="458" class="field"><tspan class="fk">FK</tspan><tspan x="375">ingredient_id</tspan><tspan x="563" text-anchor="end" class="field">INT</tspan></text>
+    <text x="337" y="483" class="field">quantity_purchased</text>
+    <text x="563" y="483" text-anchor="end" class="field">DECIMAL(10,2)</text>
+    <text x="337" y="508" class="field">purchase_date</text>
+    <text x="563" y="508" text-anchor="end" class="field">DATE</text>
+    <text x="337" y="533" class="field">total_cost</text>
+    <text x="563" y="533" text-anchor="end" class="field">DECIMAL(12,2)</text>
+    <line x1="320" y1="545" x2="580" y2="545" stroke="#e8e0d6"/>
+    <text x="337" y="565" class="note">total_cost = quantity x price</text>
+  </g>
+
+  <!-- ============ RELATIONSHIP LINES ============ -->
+  <!-- Suppliers 1 -> N Purchases -->
+  <path class="rel" d="M 610 200 L 600 200 L 600 410 L 580 410"/>
+  <text x="606" y="290" class="card">1</text>
+  <text x="606" y="308" class="card">:</text>
+  <text x="606" y="326" class="card">N</text>
+
+  <!-- Ingredients 1 -> N Purchases -->
+  <path class="rel" d="M 610 470 L 580 470"/>
+  <text x="606" y="440" class="card">1</text>
+  <text x="606" y="458" class="card">:</text>
+  <text x="606" y="476" class="card">N</text>
+
+  <!-- ============ NOTES ============ -->
+  <!-- M:N note -->
+  <rect x="45" y="345" width="245" height="120" fill="#fdf0e8" stroke="#c2410c" stroke-width="1.5" rx="8"/>
+  <text x="62" y="371" class="field" font-weight="700">M : N relationship</text>
+  <text x="62" y="393" class="note">SUPPLIERS and INGREDIENTS are</text>
+  <text x="62" y="411" class="note">linked through PURCHASES.</text>
+  <text x="62" y="429" class="note">One purchase row holds exactly</text>
+  <text x="62" y="447" class="note">one supplier + one ingredient.</text>
+
+  <!-- Referential integrity note -->
+  <rect x="45" y="490" width="245" height="120" fill="#eef4fb" stroke="#1c5cab" stroke-width="1.5" rx="8"/>
+  <text x="62" y="516" class="field" font-weight="700">Referential integrity</text>
+  <text x="62" y="538" class="note">ON DELETE RESTRICT on both FKs.</text>
+  <text x="62" y="556" class="note">A supplier or ingredient that is</text>
+  <text x="62" y="574" class="note">used in a purchase cannot be</text>
+  <text x="62" y="592" class="note">deleted.</text>
+
+  <!-- Users note -->
+  <rect x="610" y="615" width="305" height="105" fill="#f3ecfb" stroke="#6b21a8" stroke-width="1.5" rx="8"/>
+  <text x="627" y="641" class="field" font-weight="700">USERS (login + ownership)</text>
+  <text x="627" y="663" class="note">Every other table has a user_id FK, so</text>
+  <text x="627" y="681" class="note">each account owns its own stock data.</text>
+  <text x="627" y="699" class="note">password = bcrypt hash, never plain text.</text>
+
+  <!-- Legend -->
+  <rect x="45" y="635" width="530" height="85" fill="#ffffff" stroke="#e8e0d6" rx="8"/>
+  <text x="62" y="661" class="field" font-weight="700">Legend</text>
+  <text x="150" y="661" class="pk">PK</text><text x="175" y="661" class="note">= Primary Key</text>
+  <text x="290" y="661" class="fk">FK</text><text x="315" y="661" class="note">= Foreign Key</text>
+  <text x="62" y="687" class="note">All four tables use the InnoDB engine so that transactions and foreign keys work.</text>
+  <text x="62" y="707" class="note">quantity in INGREDIENTS is the current stock. A purchase increases it inside a transaction.</text>
+</svg>
